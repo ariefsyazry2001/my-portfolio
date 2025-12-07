@@ -1,12 +1,11 @@
-// app/projects/[slug]/page.tsx (once params issue is sorted)
+// app/projects/[slug]/page.tsx
 import { notFound } from "next/navigation";
-import { projects } from "@/lib/data";
-import type { Project } from "@/lib/data";
+import { projects, type Project } from "@/lib/data";
 import { spaceGrotesk } from "@/lib/fonts";
 import { Pill } from "@/components/ui/Pill";
 
 type ProjectPageProps = {
-  params: Promise<{ slug: string }>; // for Next 16 app router
+  params: Promise<{ slug: string }>; // Next 16 app router
 };
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
@@ -18,7 +17,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   return (
     <main className="min-h-screen bg-[color:var(--background)] text-[color:var(--foreground)]">
       <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8">
-        <header className="mb-6">
+        {/* Header */}
+        <header className="mb-8">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[color:var(--muted)]">
             Project
           </p>
@@ -27,51 +27,60 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           >
             {project.name}
           </h1>
-          <div className="mt-3 flex flex-wrap items-center gap-2">
+
+          <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-[color:var(--muted)]">
             <Pill>{project.tag}</Pill>
-            <span className="text-xs text-[color:var(--muted)]">
-              Tech: {project.tech.join(" · ")}
-            </span>
+            <span>Tech: {project.tech.join(" · ")}</span>
           </div>
+
+          {project.myRole && (
+            <p className="mt-2 text-xs text-[color:var(--muted)]">
+              My role: {project.myRole}
+            </p>
+          )}
         </header>
 
-        {/* Problem */}
-        <section className="mt-6 space-y-2 text-sm text-[color:var(--muted)] md:text-base">
-          <h2
-            className={`${spaceGrotesk.className} text-sm font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]`}
-          >
-            Problem
-          </h2>
-          <p>{project.problem}</p>
+        {/* Content */}
+        <section className="space-y-8 text-sm leading-relaxed text-[color:var(--muted)] md:text-base">
+          {/* Problem */}
+          <div className="space-y-2 border-t border-[color:var(--border)] pt-4 first:border-none first:pt-0">
+            <h2
+              className={`${spaceGrotesk.className} text-xs font-semibold uppercase tracking-[0.22em] text-[color:var(--muted)]`}
+            >
+              Problem
+            </h2>
+            <p>{project.problem}</p>
+          </div>
+
+          {/* Approach */}
+          <div className="space-y-2 border-t border-[color:var(--border)] pt-4">
+            <h2
+              className={`${spaceGrotesk.className} text-xs font-semibold uppercase tracking-[0.22em] text-[color:var(--muted)]`}
+            >
+              Approach
+            </h2>
+            <ul className="list-disc space-y-2 pl-5">
+              {project.highlights.map((h) => (
+                <li key={h}>{h}</li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Impact */}
+          <div className="space-y-2 border-t border-[color:var(--border)] pt-4">
+            <h2
+              className={`${spaceGrotesk.className} text-xs font-semibold uppercase tracking-[0.22em] text-[color:var(--muted)]`}
+            >
+              Impact
+            </h2>
+            <p>{project.impact}</p>
+          </div>
         </section>
 
-        {/* Approach */}
-        <section className="mt-6 space-y-2 text-sm text-[color:var(--muted)] md:text-base">
-          <h2
-            className={`${spaceGrotesk.className} text-sm font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]`}
-          >
-            Approach
-          </h2>
-          <ul className="list-disc space-y-2 pl-5">
-            {project.highlights.map((h) => (
-              <li key={h}>{h}</li>
-            ))}
-          </ul>
-        </section>
-
-        {/* Impact */}
-        <section className="mt-6 space-y-2 text-sm text-[color:var(--muted)] md:text-base">
-          <h2
-            className={`${spaceGrotesk.className} text-sm font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]`}
-          >
-            Impact
-          </h2>
-          <p>{project.impact}</p>
-        </section>
-
+        {/* Back link */}
         <a
           href="/#projects"
-          className="mt-8 inline-flex items-center justify-center rounded-full border border-[color:var(--border)] bg-[color:var(--card)] px-4 py-2 text-sm transition hover:border-[color:var(--accent-soft)]"
+          className="mt-10 inline-flex items-center justify-center rounded-full border border-[color:var(--border)] bg-[color:var(--card)] px-4 py-2 text-sm transition hover:border-[color:var(--accent-soft)]"
         >
           ← Back to projects
         </a>

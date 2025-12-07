@@ -1,5 +1,6 @@
 // lib/data.ts
 
+// ---- Skills ----
 export const skills = {
   Backend: ["Laravel", "NestJS", "FastAPI", "Flask"],
   Frontend: ["Next.js", "React", "Livewire", "HTML5", "CSS", "Tailwind CSS"],
@@ -24,16 +25,17 @@ export const skills = {
   "Databases & Tools": ["MySQL", "PostgreSQL", "MongoDB", "Git", "Excel"],
 };
 
+// ---- Experience ----
 export const experience = [
   {
     company: "INVOKE Solutions, Malaysia",
     role: "Backend Software Developer",
     period: "Feb 2025 – Present",
     bullets: [
-      "Maintain and extend multi-tenant HRMS backend (Laravel, MySQL) for HR Operations.",
-      "Built a real-time Chat System with NestJS, MongoDB and Meilisearch-powered search.",
-      "Designed a Video Interview Analytics pipeline using FastAPI, Celery, OpenAI and AWS S3.",
-      "Integrated Stripe payment gateway for Pactonline platform.",
+      "Maintain and extend multi-tenant HRMS backend (Laravel, MySQL) for HR operations.",
+      "Built a real-time chat system with NestJS, MongoDB and Meilisearch-powered search.",
+      "Designed a video interview analytics pipeline using FastAPI, Celery, OpenAI and AWS S3.",
+      "Integrated Stripe payment gateway for the Pactonline platform.",
       "Manage AWS deployments with EC2, S3, Nginx and PM2/systemd services.",
     ],
   },
@@ -56,7 +58,22 @@ export const experience = [
   },
 ];
 
-export const projects = [
+// ---- Projects ----
+
+// explicit type so the project page can use myRole etc.
+export type Project = {
+  slug: string;
+  name: string;
+  tag: string;
+  description: string;
+  tech: string[];
+  problem: string;
+  highlights: string[];
+  impact: string;
+  myRole?: string;
+};
+
+export const projects: Project[] = [
   {
     slug: "hrms-backend",
     name: "HRMS Backend",
@@ -73,6 +90,8 @@ export const projects = [
     ],
     impact:
       "Enabled multiple companies to run monthly payroll from a single HRMS backend, reduced manual steps around payroll runs and report generation, and made it easier to onboard new tenants on shared infrastructure.",
+    myRole:
+      "Backend developer focusing on payroll logic, multi-tenant design and automation of monthly payroll runs.",
   },
   {
     slug: "chat-system-with-search",
@@ -90,6 +109,8 @@ export const projects = [
     ],
     impact:
       "Provided a centralized internal chat platform with real-time messaging and fast search, making it easier for teams to find past discussions and manage communication per organization.",
+    myRole:
+      "Implemented the messaging API, WebSocket gateway and Meilisearch integration for message search.",
   },
   {
     slug: "video-interview-analytics-pipeline",
@@ -107,8 +128,7 @@ export const projects = [
     ],
     impact:
       "Reduced the need for manual, real-time video review by moving heavy work into Celery workers, giving recruiters structured feedback that scales with higher candidate volume.",
+    myRole:
+      "Designed and implemented the FastAPI endpoints and Celery pipeline for video processing, transcription and feedback generation.",
   },
-
 ];
-
-export type Project = (typeof projects)[number];
