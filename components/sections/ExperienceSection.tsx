@@ -24,7 +24,15 @@ export function ExperienceSection() {
           <article key={job.company} className="flex gap-4">
             <div className="relative mt-1 hidden w-6 md:block">
               <div className="absolute left-1.5 top-0 h-full border-l border-[color:var(--border)]" />
-              <span className="relative z-10 inline-block h-3 w-3 rounded-full border border-white bg-[#C35A33] dark:border-[#0B0908] dark:bg-[#E4A847]" />
+
+              <span
+                className="
+    relative z-10 inline-block h-3 w-3 rounded-full
+    border border-white bg-[color:var(--accent-soft)]
+    dark:border-[#0B0908] dark:bg-[color:var(--accent)]"
+              />
+
+
             </div>
             <div className="flex-1 rounded-xl border border-[color:var(--border)] bg-[color:var(--card)] p-4">
               <div className="flex flex-wrap items-baseline justify-between gap-2">

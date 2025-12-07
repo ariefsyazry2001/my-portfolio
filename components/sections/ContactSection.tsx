@@ -45,6 +45,16 @@ export function ContactSection() {
           >
             LinkedIn
           </a>
+
+          <a
+            href="/cv/muhammad-arief-syazry-suid-cv.pdf"
+            download
+            className="inline-flex items-center justify-center rounded-full border border-[color:var(--border)] bg-[color:var(--card)] px-4 py-2 text-sm transition hover:border-[color:var(--accent-soft)]"
+          >
+            Download CV
+          </a>
+
+
         </div>
       </div>
     </section>
