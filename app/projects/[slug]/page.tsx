@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { projects, type Project } from "@/lib/data";
 import { spaceGrotesk } from "@/lib/fonts";
 import { Pill } from "@/components/ui/Pill";
+import Link from "next/link";
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>; // Next 16 app router
@@ -78,12 +79,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </section>
 
         {/* Back link */}
-        <a
+        <Link
           href="/#projects"
           className="mt-10 inline-flex items-center justify-center rounded-full border border-[color:var(--border)] bg-[color:var(--card)] px-4 py-2 text-sm transition hover:border-[color:var(--accent-soft)]"
         >
           ← Back to projects
-        </a>
+        </Link>
       </div>
     </main>
   );
