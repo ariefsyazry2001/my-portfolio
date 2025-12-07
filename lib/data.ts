@@ -58,17 +58,21 @@ export const experience = [
 
 export const projects = [
   {
-    slug: "adnexio-hrms-backend",
-    name: "Adnexio HRMS Backend",
+    slug: "hrms-backend",
+    name: "HRMS Backend",
     tag: "Backend · HR & Payroll",
     description:
       "Multi-tenant HR and payroll backend powering daily operations, statutory calculations and staff management.",
     tech: ["Laravel", "MySQL", "AWS", "Redis"],
+    problem:
+      "SMEs and clinics were running HR and payroll on a mix of legacy systems and spreadsheets, making Malaysian statutory calculations hard to maintain, audit and automate across multiple companies.",
     highlights: [
-      "Implemented complex EPF, SOCSO and EIS contribution rules for local and foreign workers.",
-      "Designed scalable multi-tenant schema to support multiple companies sharing the same infrastructure.",
-      "Automated payroll runs, bank text generation and statutory report exports.",
+      "Implemented complex EPF, SOCSO and EIS contribution rules for local and foreign workers using reusable services and reference tables.",
+      "Designed a multi-tenant schema so multiple companies can share one backend while keeping data logically separated by company.",
+      "Automated payroll runs, bank text generation and statutory report exports to reduce manual spreadsheet work for HR teams.",
     ],
+    impact:
+      "Enabled multiple companies to run monthly payroll from a single HRMS backend, reduced manual steps around payroll runs and report generation, and made it easier to onboard new tenants on shared infrastructure.",
   },
   {
     slug: "chat-system-with-search",
@@ -77,11 +81,15 @@ export const projects = [
     description:
       "Internal chat platform with channels, DMs and full-text search over messages using Meilisearch.",
     tech: ["NestJS", "MongoDB", "Meilisearch", "WebSockets"],
+    problem:
+      "Teams were using scattered WhatsApp threads and emails for internal communication, making it hard to search message history, keep conversations tenant-scoped and onboard new members to existing discussions.",
     highlights: [
-      "Built WebSocket-based messaging API with channels, direct messages and typing indicators.",
-      "Indexed messages in Meilisearch for fast full-text search across organizations.",
-      "Handled multi-tenant access control and message history management.",
+      "Built a WebSocket-based messaging API in NestJS with channels, direct messages and typing indicators.",
+      "Stored messages in MongoDB with clear organization and channel scoping to support a multi-tenant setup.",
+      "Indexed messages in Meilisearch and exposed a search API for fast, filtered full-text search across conversations.",
     ],
+    impact:
+      "Provided a centralized internal chat platform with real-time messaging and fast search, making it easier for teams to find past discussions and manage communication per organization.",
   },
   {
     slug: "video-interview-analytics-pipeline",
@@ -90,12 +98,17 @@ export const projects = [
     description:
       "Async pipeline that ingests candidate videos, runs transcription and scoring, and returns structured feedback.",
     tech: ["FastAPI", "Celery", "OpenAI", "AWS S3", "FFmpeg"],
+    problem:
+      "Recruiters were manually watching candidate interview videos end-to-end, which didn’t scale and produced inconsistent feedback as candidate volume grew.",
     highlights: [
-      "Orchestrated Celery tasks for downloading, splitting and processing candidate videos.",
-      "Used OpenAI APIs for transcription and feedback generation with structured JSON outputs.",
-      "Exposed a clean REST API for the frontend to trigger analysis and poll for results.",
+      "Designed an async API in FastAPI where the frontend submits a video analysis job and receives a job ID instead of blocking on long-running work.",
+      "Orchestrated Celery tasks to download videos from S3, preprocess them with FFmpeg, transcribe audio with OpenAI and generate structured feedback per question.",
+      "Returned analysis results as structured JSON so frontends can display per-question scores, comments and overall summaries without extra parsing.",
     ],
+    impact:
+      "Reduced the need for manual, real-time video review by moving heavy work into Celery workers, giving recruiters structured feedback that scales with higher candidate volume.",
   },
+
 ];
 
 export type Project = (typeof projects)[number];
