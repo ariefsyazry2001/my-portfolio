@@ -7,6 +7,9 @@
   --muted: #7d6a5a;        /* secondary text */
   --border: #e3d3c1;       /* card/border lines */
   --card: #fff8ec;         /* card background */
+
+  --accent: #e4a847;       /* gold – primary CTA */
+  --accent-soft: #c35a33;  /* batik red – subtle accent */
 }
 
 /* Dark theme – controlled by html.dark */
@@ -16,6 +19,9 @@ html.dark {
   --muted: #c9b6a3;        /* secondary text */
   --border: #3a2d24;       /* card/border lines */
   --card: #1a120f;         /* card background */
+
+  --accent: #e4a847;
+  --accent-soft: #c35a33;
 }
 
 /* Base body styles */
