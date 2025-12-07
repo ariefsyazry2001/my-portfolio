@@ -1,5 +1,6 @@
 // lib/data.ts
 
+// ---- Skills ----
 export const skills = {
   Backend: ["Laravel", "NestJS", "FastAPI", "Flask"],
   Frontend: ["Next.js", "React", "Livewire", "HTML5", "CSS", "Tailwind CSS"],
@@ -24,16 +25,17 @@ export const skills = {
   "Databases & Tools": ["MySQL", "PostgreSQL", "MongoDB", "Git", "Excel"],
 };
 
+// ---- Experience ----
 export const experience = [
   {
     company: "INVOKE Solutions, Malaysia",
     role: "Backend Software Developer",
     period: "Feb 2025 – Present",
     bullets: [
-      "Maintain and extend multi-tenant HRMS backend (Laravel, MySQL) for HR Operations.",
-      "Built a real-time Chat System with NestJS, MongoDB and Meilisearch-powered search.",
-      "Designed a Video Interview Analytics pipeline using FastAPI, Celery, OpenAI and AWS S3.",
-      "Integrated Stripe payment gateway for Pactonline platform.",
+      "Maintain and extend multi-tenant HRMS backend (Laravel, MySQL) for HR operations.",
+      "Built a real-time chat system with NestJS, MongoDB and Meilisearch-powered search.",
+      "Designed a video interview analytics pipeline using FastAPI, Celery, OpenAI and AWS S3.",
+      "Integrated Stripe payment gateway for the Pactonline platform.",
       "Manage AWS deployments with EC2, S3, Nginx and PM2/systemd services.",
     ],
   },
@@ -56,19 +58,40 @@ export const experience = [
   },
 ];
 
-export const projects = [
+// ---- Projects ----
+
+// explicit type so the project page can use myRole etc.
+export type Project = {
+  slug: string;
+  name: string;
+  tag: string;
+  description: string;
+  tech: string[];
+  problem: string;
+  highlights: string[];
+  impact: string;
+  myRole?: string;
+};
+
+export const projects: Project[] = [
   {
-    slug: "adnexio-hrms-backend",
-    name: "Adnexio HRMS Backend",
+    slug: "hrms-backend",
+    name: "HRMS Backend",
     tag: "Backend · HR & Payroll",
     description:
       "Multi-tenant HR and payroll backend powering daily operations, statutory calculations and staff management.",
     tech: ["Laravel", "MySQL", "AWS", "Redis"],
+    problem:
+      "SMEs and clinics were running HR and payroll on a mix of legacy systems and spreadsheets, making Malaysian statutory calculations hard to maintain, audit and automate across multiple companies.",
     highlights: [
-      "Implemented complex EPF, SOCSO and EIS contribution rules for local and foreign workers.",
-      "Designed scalable multi-tenant schema to support multiple companies sharing the same infrastructure.",
-      "Automated payroll runs, bank text generation and statutory report exports.",
+      "Implemented complex EPF, SOCSO and EIS contribution rules for local and foreign workers using reusable services and reference tables.",
+      "Designed a multi-tenant schema so multiple companies can share one backend while keeping data logically separated by company.",
+      "Automated payroll runs, bank text generation and statutory report exports to reduce manual spreadsheet work for HR teams.",
     ],
+    impact:
+      "Enabled multiple companies to run monthly payroll from a single HRMS backend, reduced manual steps around payroll runs and report generation, and made it easier to onboard new tenants on shared infrastructure.",
+    myRole:
+      "Backend developer focusing on payroll logic, multi-tenant design and automation of monthly payroll runs.",
   },
   {
     slug: "chat-system-with-search",
@@ -77,11 +100,17 @@ export const projects = [
     description:
       "Internal chat platform with channels, DMs and full-text search over messages using Meilisearch.",
     tech: ["NestJS", "MongoDB", "Meilisearch", "WebSockets"],
+    problem:
+      "Teams were using scattered WhatsApp threads and emails for internal communication, making it hard to search message history, keep conversations tenant-scoped and onboard new members to existing discussions.",
     highlights: [
-      "Built WebSocket-based messaging API with channels, direct messages and typing indicators.",
-      "Indexed messages in Meilisearch for fast full-text search across organizations.",
-      "Handled multi-tenant access control and message history management.",
+      "Built a WebSocket-based messaging API in NestJS with channels, direct messages and typing indicators.",
+      "Stored messages in MongoDB with clear organization and channel scoping to support a multi-tenant setup.",
+      "Indexed messages in Meilisearch and exposed a search API for fast, filtered full-text search across conversations.",
     ],
+    impact:
+      "Provided a centralized internal chat platform with real-time messaging and fast search, making it easier for teams to find past discussions and manage communication per organization.",
+    myRole:
+      "Implemented the messaging API, WebSocket gateway and Meilisearch integration for message search.",
   },
   {
     slug: "video-interview-analytics-pipeline",
@@ -90,12 +119,16 @@ export const projects = [
     description:
       "Async pipeline that ingests candidate videos, runs transcription and scoring, and returns structured feedback.",
     tech: ["FastAPI", "Celery", "OpenAI", "AWS S3", "FFmpeg"],
+    problem:
+      "Recruiters were manually watching candidate interview videos end-to-end, which didn’t scale and produced inconsistent feedback as candidate volume grew.",
     highlights: [
-      "Orchestrated Celery tasks for downloading, splitting and processing candidate videos.",
-      "Used OpenAI APIs for transcription and feedback generation with structured JSON outputs.",
-      "Exposed a clean REST API for the frontend to trigger analysis and poll for results.",
+      "Designed an async API in FastAPI where the frontend submits a video analysis job and receives a job ID instead of blocking on long-running work.",
+      "Orchestrated Celery tasks to download videos from S3, preprocess them with FFmpeg, transcribe audio with OpenAI and generate structured feedback per question.",
+      "Returned analysis results as structured JSON so frontends can display per-question scores, comments and overall summaries without extra parsing.",
     ],
+    impact:
+      "Reduced the need for manual, real-time video review by moving heavy work into Celery workers, giving recruiters structured feedback that scales with higher candidate volume.",
+    myRole:
+      "Designed and implemented the FastAPI endpoints and Celery pipeline for video processing, transcription and feedback generation.",
   },
 ];
-
-export type Project = (typeof projects)[number];

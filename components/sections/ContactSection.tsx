@@ -30,7 +30,7 @@ export function ContactSection() {
             Email me
           </a>
           <a
-            href="https://github.com/your-real-github-here"
+            href="https://github.com/ariefsyazry2001"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center justify-center rounded-full border border-[color:var(--border)] bg-[color:var(--card)] px-4 py-2 text-sm transition hover:border-[#C35A33]"
@@ -38,7 +38,7 @@ export function ContactSection() {
             GitHub
           </a>
           <a
-            href="https://www.linkedin.com/in/your-real-linkedin-here"
+            href="https://my.linkedin.com/in/muhammad-arief-syazry-suid-baa577312/en"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center justify-center rounded-full border border-[color:var(--border)] bg-[color:var(--card)] px-4 py-2 text-sm transition hover:border-[#C35A33]"

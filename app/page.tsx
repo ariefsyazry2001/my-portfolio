@@ -5,6 +5,7 @@ import { Hero } from "@/components/sections/Hero";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
+import { HighlightsStrip } from "@/components/sections/HighlightsStrip";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 
@@ -14,6 +15,7 @@ export default function Home() {
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <Header />
         <Hero />
+        <HighlightsStrip />
         <AboutSection />
         <SkillsSection />
         <ExperienceSection />
