@@ -3,18 +3,18 @@
 /* Light theme (default) */
 :root {
   --background: #fdf3e3;   /* warm light background */
-  --foreground: #2f221b;   /* dark brown text */
+  --foreground: #2f221b;   /* main text */
   --muted: #7d6a5a;        /* secondary text */
-  --border: #e3d3c1;       /* subtle borders */
+  --border: #e3d3c1;       /* card/border lines */
   --card: #fff8ec;         /* card background */
 }
 
-/* Dark theme – whenever an ancestor has class="dark" */
-.dark {
+/* Dark theme – controlled by html.dark */
+html.dark {
   --background: #0b0908;   /* deep dark brown */
-  --foreground: #f9f5ec;   /* warm light text */
+  --foreground: #f9f5ec;   /* main text */
   --muted: #c9b6a3;        /* secondary text */
-  --border: #3a2d24;       /* borders */
+  --border: #3a2d24;       /* card/border lines */
   --card: #1a120f;         /* card background */
 }
 

@@ -67,7 +67,7 @@ export default function Home() {
               <h1
                 className={`${spaceGrotesk.className} text-3xl font-semibold leading-tight md:text-4xl`}
               >
-                Backend Software Developer
+                Full Stack Software Developer
               </h1>
               <p className="mt-3 max-w-xl text-sm text-[color:var(--muted)] md:text-base">
                 I build reliable backend systems & infrastructure — from HR and
@@ -92,12 +92,15 @@ export default function Home() {
               <div className="mt-6 flex flex-wrap gap-2 text-xs text-[color:var(--muted)]">
                 {["Laravel & NestJS", "FastAPI & Celery", "AWS & Stripe"].map(
                   (item) => (
+
                     <span
                       key={item}
-                      className="rounded-full border border-[color:var(--border)] bg-[color:var(--card)] px-3 py-1"
-                    >
+                      className=" rounded-full border border-[color:var(--border)] bg-[#2F221B] text-[#F9F5EC] dark:bg-[#0F0A08] dark:text-[#F9F5EC]  px-3 py-1 text-xs "
+                   >
                       {item}
                     </span>
+
+
                   ),
                 )}
               </div>
@@ -126,9 +129,19 @@ export default function Home() {
                       Backend Engineer · Malaysia
                     </p>
                   </div>
-                  <span className="inline-flex items-center rounded-full bg-[#E4A847]/20 px-3 py-1 text-[11px] font-medium text-[#7A5A1A] dark:bg-[#E4A847]/25 dark:text-[#F9F5EC]">
+
+                  <span
+                    className="
+    inline-flex items-center rounded-full px-3 py-1 text-[11px] font-medium
+    bg-[#2F221B] text-[#F9F5EC]             /* light mode */
+    dark:bg-[#E4A847] dark:text-[#22160C]   /* dark mode  */
+  "
+                  >
                     Backend · DevOps · AI
                   </span>
+
+
+
                 </div>
               </div>
             </aside>
@@ -196,9 +209,10 @@ export default function Home() {
                 </p>
                 <div className="mt-3 flex flex-wrap gap-2 text-xs text-[color:var(--muted)]">
                   {items.map((item) => (
+                    
                     <span
                       key={item}
-                      className="rounded-full border border-[color:var(--border)] bg-[#FDF3E3] px-3 py-1 dark:bg-[#0F0A08]"
+                      className="rounded-full border border-[color:var(--border)] px-3 py-1 bg-[#2F221B] text-[#F9F5EC] dark:bg-[#0F0A08] dark:text-[#F9F5EC]"
                     >
                       {item}
                     </span>
@@ -287,7 +301,7 @@ export default function Home() {
                   <div className="flex items-start justify-between gap-3">
                     <div>
                       <h3
-                        className={`${spaceGrotesk.className} text-sm font-semibold`}
+                        className={`${spaceGrotesk.className} text-sm font-semibold text-[var(--foreground)]`}
                       >
                         {project.name}
                       </h3>
@@ -295,18 +309,23 @@ export default function Home() {
                         {project.description}
                       </p>
                     </div>
-                    <span className="rounded-full bg-[#FDF3E3] px-3 py-1 text-[11px] font-medium text-[color:var(--muted)] dark:bg-[#0F0A08]">
+
+                    <span className="rounded-full bg-[#FDF3E3] px-3 py-1 text-[11px] font-medium bg-[#2F221B] text-[#F9F5EC] dark:bg-[#E4A847] dark:text-[#22160C]">
                       {project.tag}
                     </span>
+
                   </div>
                   <div className="mt-3 flex flex-wrap gap-2 text-[11px] text-[color:var(--muted)]">
                     {project.tech.map((t) => (
-                      <span
-                        key={t}
-                        className="rounded-full border border-[color:var(--border)] bg-[#FDF3E3] px-2.5 py-1 dark:bg-[#0F0A08]"
-                      >
-                        {t}
-                      </span>
+
+<span
+  key={t}
+  className="
+    rounded-full px-2.5 py-1 text-[11px] font-medium bg-[#2F221B] text-[#F9F5EC] dark:bg-[#0F0A08] dark:text-[#F9F5EC]">
+  {t}
+</span>
+
+
                     ))}
                   </div>
                   <span className="mt-3 text-[11px] font-medium text-[#C35A33] opacity-0 transition group-hover:opacity-100 dark:text-[#E4A847]">
