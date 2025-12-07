@@ -9,21 +9,18 @@ export function Hero() {
         {/* Text */}
         <div>
           <p className="mb-3 text-xs font-medium uppercase tracking-[0.22em] text-[color:var(--muted)]">
-            Backend · DevOps · AI
+            Full Stack · Backend · DevOps
           </p>
           <h1
             className={`${spaceGrotesk.className} text-3xl font-semibold leading-tight md:text-4xl`}
           >
-            Backend Engineer for HR, Payroll &amp; Analytics Systems
+            Full Stack Software Developer
           </h1>
           <p className="mt-3 max-w-xl text-sm text-[color:var(--muted)] md:text-base">
-            I design and maintain backend services, APIs and worker pipelines
-            for HR, chat and video analytics platforms — using Laravel, NestJS,
-            FastAPI and AWS.
+            I build production backends, APIs and simple frontends for HR, chat and video analytics products.
           </p>
           <p className="mt-2 text-xs font-medium text-[color:var(--muted)]">
-            Currently: Backend Software Developer at INVOKE Solutions (HRMS,
-            chat, video analytics).
+            Based in Malaysia · Backend Developer at INVOKE Solutions.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
